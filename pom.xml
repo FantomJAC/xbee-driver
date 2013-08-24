@@ -4,7 +4,7 @@
 
   <groupId>com.valleycampus.xbee</groupId>
   <artifactId>xbee-driver</artifactId>
-  <version>0.1</version>
+  <version>0.1.1</version>
   <packaging>jar</packaging>
 
   <name>xbee-driver</name>

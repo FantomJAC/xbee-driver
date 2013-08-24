@@ -24,10 +24,10 @@ import org.squilla.io.FrameBuffer;
  */
 public class ExplicitAddressingZigBeeCommandFrame extends XBeeAddressingRequest {
 
-    private byte sourceEndpoint;
-    private byte destinationEndpoint;
-    private int clusterID;
-    private int profileID;
+    private int sourceEndpoint;
+    private int destinationEndpoint;
+    private short clusterId;
+    private short profileId;
     private byte broadcastRadius;
     private byte transmitOptions;
     private byte[] payload;
@@ -40,8 +40,8 @@ public class ExplicitAddressingZigBeeCommandFrame extends XBeeAddressingRequest 
         super.pull(frameBuffer);
         frameBuffer.putInt8(sourceEndpoint);
         frameBuffer.putInt8(destinationEndpoint);
-        frameBuffer.putInt16(clusterID);
-        frameBuffer.putInt16(profileID);
+        frameBuffer.putInt16(clusterId);
+        frameBuffer.putInt16(profileId);
         frameBuffer.putInt8(broadcastRadius);
         frameBuffer.putInt8(transmitOptions);
         if (payload != null) {
@@ -60,57 +60,57 @@ public class ExplicitAddressingZigBeeCommandFrame extends XBeeAddressingRequest 
     /**
      * @return the sourceEndpoint
      */
-    public byte getSourceEndpoint() {
+    public int getSourceEndpoint() {
         return sourceEndpoint;
     }
 
     /**
      * @param sourceEndpoint the sourceEndpoint to set
      */
-    public void setSourceEndpoint(byte sourceEndpoint) {
+    public void setSourceEndpoint(int sourceEndpoint) {
         this.sourceEndpoint = sourceEndpoint;
     }
 
     /**
      * @return the destinationEndpoint
      */
-    public byte getDestinationEndpoint() {
+    public int getDestinationEndpoint() {
         return destinationEndpoint;
     }
 
     /**
      * @param destinationEndpoint the destinationEndpoint to set
      */
-    public void setDestinationEndpoint(byte destinationEndpoint) {
+    public void setDestinationEndpoint(int destinationEndpoint) {
         this.destinationEndpoint = destinationEndpoint;
     }
 
     /**
-     * @return the clusterID
+     * @return the clusterId
      */
-    public int getClusterID() {
-        return clusterID;
+    public short getClusterId() {
+        return clusterId;
     }
 
     /**
-     * @param clusterID the clusterID to set
+     * @param clusterId the clusterID to set
      */
-    public void setClusterID(int clusterID) {
-        this.clusterID = clusterID;
+    public void setClusterID(short clusterId) {
+        this.clusterId = clusterId;
     }
 
     /**
-     * @return the profileID
+     * @return the profileId
      */
-    public int getProfileID() {
-        return profileID;
+    public short getProfileId() {
+        return profileId;
     }
 
     /**
-     * @param profileID the profileID to set
+     * @param profileId the profileId to set
      */
-    public void setProfileID(int profileID) {
-        this.profileID = profileID;
+    public void setProfileId(short profileId) {
+        this.profileId = profileId;
     }
 
     /**
@@ -154,6 +154,5 @@ public class ExplicitAddressingZigBeeCommandFrame extends XBeeAddressingRequest 
     public void setPayload(byte[] payload) {
         this.payload = payload;
     }
-
 
 }

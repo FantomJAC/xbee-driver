@@ -28,19 +28,19 @@ public class ZigBeeExplicitRxIndicator extends XBeeAddressingIndicator {
     static final byte BROAD_CAST_PACKET = 0x02;
     static final byte ENCRYPTED_APS_ENCRYPTION = 0x03;
     static final byte SENT_FROM_ENDDEVICE = 0x04;
-    private byte sourceEndpoint;
-    private byte destinationEndpoint;
-    private int clusterID;
-    private int profileID;
+    private int sourceEndpoint;
+    private int destinationEndpoint;
+    private short clusterId;
+    private short profileId;
     private byte receiveOptions;
     private byte[] payload;
     
     public void drain(FrameBuffer frameBuffer) {
         super.drain(frameBuffer);
-        sourceEndpoint = frameBuffer.getByte();
-        destinationEndpoint = frameBuffer.getByte();
-        clusterID = frameBuffer.getInt16();
-        profileID = frameBuffer.getInt16();
+        sourceEndpoint = frameBuffer.getInt8();
+        destinationEndpoint = frameBuffer.getInt8();
+        clusterId = frameBuffer.getShort();
+        profileId = frameBuffer.getShort();
         receiveOptions = frameBuffer.getByte();
         if (frameBuffer.getRemaining() > 0) {
             payload = frameBuffer.getByteArray(frameBuffer.getRemaining());
@@ -50,29 +50,29 @@ public class ZigBeeExplicitRxIndicator extends XBeeAddressingIndicator {
     /**
      * @return the sourceEndpoint
      */
-    public byte getSourceEndpoint() {
+    public int getSourceEndpoint() {
         return sourceEndpoint;
     }
 
     /**
      * @return the destinationEndpoint
      */
-    public byte getDestinationEndpoint() {
+    public int getDestinationEndpoint() {
         return destinationEndpoint;
     }
 
     /**
-     * @return the clusterID
+     * @return the clusterId
      */
-    public int getClusterID() {
-        return clusterID;
+    public short getClusterId() {
+        return clusterId;
     }
 
     /**
-     * @return the profileID
+     * @return the profileId
      */
-    public int getProfileID() {
-        return profileID;
+    public short getProfileId() {
+        return profileId;
     }
 
     /**

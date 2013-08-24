@@ -31,7 +31,7 @@ public class NodeIdentification implements Frame {
     private short parentAddress16;
     private byte deviceType;
     private byte status;
-    private int profileId;
+    private short profileId;
     private int manufacturerId;
     
     public static NodeIdentification parse(byte[] data) {
@@ -57,7 +57,7 @@ public class NodeIdentification implements Frame {
         parentAddress16 = frameBuffer.getShort();
         deviceType = frameBuffer.getByte();
         status = frameBuffer.getByte();
-        profileId = frameBuffer.getInt16();
+        profileId = frameBuffer.getShort();
         manufacturerId = frameBuffer.getInt16();
     }
 
@@ -114,7 +114,7 @@ public class NodeIdentification implements Frame {
     /**
      * @return the profileId
      */
-    public int getProfileId() {
+    public short getProfileId() {
         return profileId;
     }
 
